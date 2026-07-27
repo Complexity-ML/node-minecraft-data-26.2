@@ -6,14 +6,14 @@ It is the data layer used by GAME LAB's protocol and Mineflayer distributions.
 
 | Package | Minecraft Java | Protocol | Data version |
 | --- | --- | --- | --- |
-| `minecraft-data@3.111.0+complexity.26.2.2` | 26.2 | 776 | 4903 |
+| `minecraft-data@3.111.0+complexity.26.2.3` | 26.2 | 776 | 4903 |
 
 ## Install
 
 The standalone package is distributed as an immutable GitHub Release asset:
 
 ```bash
-npm install "https://github.com/Complexity-ML/node-minecraft-data-26.2/releases/download/complexity-26.2.2/minecraft-data-complexity-26.2.2.tgz"
+npm install "https://github.com/Complexity-ML/node-minecraft-data-26.2/releases/download/complexity-26.2.3/minecraft-data-complexity-26.2.3.tgz"
 ```
 
 Pin this exact URL in applications that must reproduce the GAME LAB 26.2
