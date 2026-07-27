@@ -1,33 +1,81 @@
-# node-minecraft-data
+# Node Minecraft Data 26.2
 
-[![NPM version](https://badge.fury.io/js/minecraft-data.svg)](http://badge.fury.io/js/minecraft-data)
-[![Tonic](https://img.shields.io/badge/tonic-try%20it-blue.svg)](https://tonicdev.com/npm/minecraft-data)
-[![Build Status](https://github.com/PrismarineJS/node-minecraft-data/workflows/CI/badge.svg)](https://github.com/PrismarineJS/node-minecraft-data/actions?query=workflow%3A%22CI%22)
-[![Try it on gitpod](https://img.shields.io/badge/try-on%20gitpod-brightgreen.svg)](https://gitpod.io/#https://github.com/PrismarineJS/node-minecraft-data)
+Standalone Node.js package for the
+[Complexity-ML Minecraft Java 26.2 dataset](https://github.com/Complexity-ML/minecraft-data-26.2).
+It is the data layer used by GAME LAB's protocol and Mineflayer distributions.
 
-`node-minecraft-data` provides easy access to [minecraft-data](https://github.com/PrismarineJS/minecraft-data) in node.js.
+| Package | Minecraft Java | Protocol | Data version |
+| --- | --- | --- | --- |
+| `minecraft-data@3.111.0+complexity.26.2.2` | 26.2 | 776 | 4903 |
 
-The objective of this module is to make easier to look for information in `minecraft-data` in node.
+## Install
 
-## Features
+The standalone package is distributed as an immutable GitHub Release asset:
 
-This package allows the lookup of blocks, items, entities, etc. by name, id, etc., and for the easy lookup of other data.
+```bash
+npm install "https://github.com/Complexity-ML/node-minecraft-data-26.2/releases/download/complexity-26.2.2/minecraft-data-complexity-26.2.2.tgz"
+```
 
-## Example
+Pin this exact URL in applications that must reproduce the GAME LAB 26.2
+runtime. The archive includes all data files; consumers do not need to
+initialize a Git submodule.
+
+## Usage
 
 ```js
 const minecraftData = require('minecraft-data')
-// or for es6: import minecraftData from 'minecraft-data';
 
-const mcData = minecraftData('1.19')
+const mcData = minecraftData('26.2')
 
-console.log(mcData.blocksByName['stone']) // Information for "Stone"
-console.log(mcData.windows['minecraft:brewing_stand']) // Information for the "Brewing Stand" GUI
-console.log(mcData.version) // Information about the current version
-console.log(mcData.effectsByName['Haste']) // Information for the "Haste" effect
+console.log(mcData.version.minecraftVersion) // 26.2
+console.log(mcData.version.version) // protocol 776
+console.log(mcData.blocksByName.oak_log)
 ```
+
+ES modules can import the same CommonJS entry point:
+
+```js
+import minecraftData from 'minecraft-data'
+
+const mcData = minecraftData('26.2')
+```
+
+## Included data
+
+The package exposes blocks, items, entities, biomes, recipes, sounds,
+particles, effects, enchantments, protocol schemas and version metadata. It
+also retains the historical datasets inherited from upstream.
+
+## Validate from source
+
+```bash
+git clone --recurse-submodules https://github.com/Complexity-ML/node-minecraft-data-26.2.git
+cd node-minecraft-data-26.2
+npm install
+npm test
+```
+
+The current release passes 888 package tests and 501,995 schema validations.
 
 ## Documentation
 
-* See [doc/api.md](doc/api.md)
-* See [doc/history.md](doc/history.md)
+- [API reference](doc/api.md)
+- [Data history](doc/history.md)
+- [Raw 26.2 dataset](https://github.com/Complexity-ML/minecraft-data-26.2)
+- [Releases](https://github.com/Complexity-ML/node-minecraft-data-26.2/releases)
+
+## Maintenance
+
+Open issues and pull requests in this repository for the Complexity-ML 26.2
+package. Release archives are the supported installation surface.
+
+## Credits and license
+
+Derived from
+[PrismarineJS node-minecraft-data](https://github.com/PrismarineJS/node-minecraft-data)
+and [PrismarineJS minecraft-data](https://github.com/PrismarineJS/minecraft-data).
+The upstream history and contributor attribution are retained. Complexity-ML
+maintains this distribution independently and is not affiliated with Mojang or
+Microsoft.
+
+Licensed under MIT, as declared in [package.json](package.json).
